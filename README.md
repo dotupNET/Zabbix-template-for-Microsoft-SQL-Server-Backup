@@ -1,6 +1,8 @@
 # Zabbix template for Microsoft SQL Server Backup
 Zabbix template for Microsoft SQL Server (MS SQL) backup status.
 
+## How to
+https://blog.dotup.de/mit-zabbix-mssql-server-backup-ueberwachen/
 
 ### Features
 + MS SQL instance Low Level Discovery.
