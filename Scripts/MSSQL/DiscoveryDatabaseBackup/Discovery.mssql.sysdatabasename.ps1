@@ -30,7 +30,7 @@ function get-instance-dbnames([string]$instanceName)
             # Select all the system database names within this instance  
             $SqlCmd.CommandText = "SELECT name
 					FROM master.sys.databases
-					WHERE name IN('master', 'model', 'msdb')"
+          WHERE name NOT IN('master', 'model', 'msdb', 'tempdb') and name not like '%$%'"
             $SqlCmd.Connection = $Connection
             $SqlAdapter = New-Object System.Data.SqlClient.SqlDataAdapter
             $SqlAdapter.SelectCommand = $SqlCmd
@@ -46,7 +46,7 @@ function get-instance-dbnames([string]$instanceName)
 
     if ($DataTable)
     {
-		$DataTable.Rows | %{
+		$DataTable.Rows | ForEach-Object {
 			[PSCustomObject] @{
 				'{#SQLINSTANCENAME}' = $instanceName
 				'{#DBNAME}' = $_.name
@@ -59,7 +59,7 @@ function get-instance-dbnames([string]$instanceName)
 
 
 $obj = [PSCustomObject] @{
-    data = @((get-itemproperty 'HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server').InstalledInstances | % {
+    data = @((get-itemproperty 'HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server').InstalledInstances | ForEach-Object {
             get-instance-dbnames($_)
         }) 
 }
