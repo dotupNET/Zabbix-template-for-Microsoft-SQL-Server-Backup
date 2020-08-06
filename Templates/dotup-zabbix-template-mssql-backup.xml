@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
   <version>5.0</version>
-  <date>2020-08-06T12:39:40Z</date>
+  <date>2020-08-06T14:13:45Z</date>
   <groups>
     <group>
       <name>Templates</name>
@@ -9,21 +9,19 @@
   </groups>
   <templates>
     <template>
-      <template>dotup-Template-Microsoft SQL Server Database Backup</template>
-      <name>dotup-Template-Microsoft SQL Server Database Backup</name>
+      <template>dotup-zabbix-template-mssql-backup</template>
+      <name>Template DB MSSQL backup monitoring (dotup.de)</name>
       <description>Zabbix template for Microsoft SQL Server backup monitoring.&#13;
 &#13;
 -Microsoft SQL Server 2012, 2014 and 2016&#13;
 -Zabbix 5.0.2&#13;
 &#13;
-For Low Level Discovery to work additional scripts must be configured.&#13;
-&#13;
 dotup IT solutions - Peter Ullrich&#13;
 &#13;
 Source: https://github.com/dotupNET/dotup-zabbix-template-mssql-backup&#13;
 &#13;
-&#13;
-Based on https://github.com/MantasTumenas/Zabbix-template-for-Microsoft-SQL-Server-Backup</description>
+https://dotup.de&#13;
+https://blog.dotup.de</description>
       <groups>
         <group>
           <name>Templates</name>
@@ -66,7 +64,7 @@ System databases here are: master, model, msdb, distribution, ReportServer, Repo
                   <name>MSSQL - {#SQLINSTANCENAME}</name>
                 </application_prototype>
                 <application_prototype>
-                  <name>SQL {#SQLINSTANCENAME} System Database {#DBNAME}</name>
+                  <name>MSSQL - {#SQLINSTANCENAME} - System Database {#DBNAME}</name>
                 </application_prototype>
               </application_prototypes>
               <valuemap>
@@ -96,7 +94,7 @@ System databases here are: master, model, msdb, distribution, ReportServer, Repo
                   <dependencies>
                     <dependency>
                       <name>SQL Instance {#SQLINSTANCENAME} System Database {#DBNAME}: Full Backup is older then {$SYSDBFTIME1} hours</name>
-                      <expression>{dotup-Template-Microsoft SQL Server Database Backup:backup.sysdatabasefull.mssql.status[{#SQLINSTANCENAME},{#DBNAME},{$SYSDBFTIME1},{$SYSDBFTIME2},{$SYSDBFTIME3}].last(,0)}=2</expression>
+                      <expression>{dotup-zabbix-template-mssql-backup:backup.sysdatabasefull.mssql.status[{#SQLINSTANCENAME},{#DBNAME},{$SYSDBFTIME1},{$SYSDBFTIME2},{$SYSDBFTIME3}].last(,0)}=2</expression>
                     </dependency>
                   </dependencies>
                   <tags>
@@ -115,7 +113,7 @@ System databases here are: master, model, msdb, distribution, ReportServer, Repo
                   <dependencies>
                     <dependency>
                       <name>SQL Instance {#SQLINSTANCENAME} System Database {#DBNAME}: Full Backup is older then {$SYSDBFTIME2} hours</name>
-                      <expression>{dotup-Template-Microsoft SQL Server Database Backup:backup.sysdatabasefull.mssql.status[{#SQLINSTANCENAME},{#DBNAME},{$SYSDBFTIME1},{$SYSDBFTIME2},{$SYSDBFTIME3}].last(,0)}=3</expression>
+                      <expression>{dotup-zabbix-template-mssql-backup:backup.sysdatabasefull.mssql.status[{#SQLINSTANCENAME},{#DBNAME},{$SYSDBFTIME1},{$SYSDBFTIME2},{$SYSDBFTIME3}].last(,0)}=3</expression>
                     </dependency>
                   </dependencies>
                   <tags>
@@ -168,7 +166,7 @@ System databases here are: master, model, msdb, distribution, ReportServer, Repo
                   <name>MSSQL - {#SQLINSTANCENAME}</name>
                 </application_prototype>
                 <application_prototype>
-                  <name>SQL {#SQLINSTANCENAME} Database {#DBNAME}</name>
+                  <name>MSSQL - {#SQLINSTANCENAME} - Database {#DBNAME}</name>
                 </application_prototype>
               </application_prototypes>
               <valuemap>
@@ -198,7 +196,7 @@ System databases here are: master, model, msdb, distribution, ReportServer, Repo
                   <dependencies>
                     <dependency>
                       <name>SQL Instance {#SQLINSTANCENAME} Database {#DBNAME}: Diff Backup is older then {$UDBDTIME1} hours</name>
-                      <expression>{dotup-Template-Microsoft SQL Server Database Backup:backup.userdatabasediff.mssql.status[{#SQLINSTANCENAME},{#DBNAME},{$UDBDTIME1},{$UDBDTIME2},{$UDBDTIME3}].last(,0)}=12</expression>
+                      <expression>{dotup-zabbix-template-mssql-backup:backup.userdatabasediff.mssql.status[{#SQLINSTANCENAME},{#DBNAME},{$UDBDTIME1},{$UDBDTIME2},{$UDBDTIME3}].last(,0)}=12</expression>
                     </dependency>
                   </dependencies>
                   <tags>
@@ -217,7 +215,7 @@ System databases here are: master, model, msdb, distribution, ReportServer, Repo
                   <dependencies>
                     <dependency>
                       <name>SQL Instance {#SQLINSTANCENAME} Database {#DBNAME}: Diff Backup is older then {$UDBDTIME2} hours</name>
-                      <expression>{dotup-Template-Microsoft SQL Server Database Backup:backup.userdatabasediff.mssql.status[{#SQLINSTANCENAME},{#DBNAME},{$UDBDTIME1},{$UDBDTIME2},{$UDBDTIME3}].last(,0)}=13</expression>
+                      <expression>{dotup-zabbix-template-mssql-backup:backup.userdatabasediff.mssql.status[{#SQLINSTANCENAME},{#DBNAME},{$UDBDTIME1},{$UDBDTIME2},{$UDBDTIME3}].last(,0)}=13</expression>
                     </dependency>
                   </dependencies>
                   <tags>
@@ -261,7 +259,7 @@ System databases here are: master, model, msdb, distribution, ReportServer, Repo
                   <name>MSSQL - {#SQLINSTANCENAME}</name>
                 </application_prototype>
                 <application_prototype>
-                  <name>SQL {#SQLINSTANCENAME} Database {#DBNAME}</name>
+                  <name>MSSQL - {#SQLINSTANCENAME} - Database {#DBNAME}</name>
                 </application_prototype>
               </application_prototypes>
               <valuemap>
@@ -291,7 +289,7 @@ System databases here are: master, model, msdb, distribution, ReportServer, Repo
                   <dependencies>
                     <dependency>
                       <name>SQL Instance {#SQLINSTANCENAME} Database {#DBNAME}: Full Backup is older then {$UDBFTIME1} hours</name>
-                      <expression>{dotup-Template-Microsoft SQL Server Database Backup:backup.userdatabasefull.mssql.status[{#SQLINSTANCENAME},{#DBNAME},{$UDBFTIME1},{$UDBFTIME2},{$UDBFTIME3}].last(,0)}=7</expression>
+                      <expression>{dotup-zabbix-template-mssql-backup:backup.userdatabasefull.mssql.status[{#SQLINSTANCENAME},{#DBNAME},{$UDBFTIME1},{$UDBFTIME2},{$UDBFTIME3}].last(,0)}=7</expression>
                     </dependency>
                   </dependencies>
                   <tags>
@@ -310,7 +308,7 @@ System databases here are: master, model, msdb, distribution, ReportServer, Repo
                   <dependencies>
                     <dependency>
                       <name>SQL Instance {#SQLINSTANCENAME} Database {#DBNAME}: Full Backup is older then {$UDBFTIME2} hours</name>
-                      <expression>{dotup-Template-Microsoft SQL Server Database Backup:backup.userdatabasefull.mssql.status[{#SQLINSTANCENAME},{#DBNAME},{$UDBFTIME1},{$UDBFTIME2},{$UDBFTIME3}].last(,0)}=8</expression>
+                      <expression>{dotup-zabbix-template-mssql-backup:backup.userdatabasefull.mssql.status[{#SQLINSTANCENAME},{#DBNAME},{$UDBFTIME1},{$UDBFTIME2},{$UDBFTIME3}].last(,0)}=8</expression>
                     </dependency>
                   </dependencies>
                   <tags>
@@ -354,7 +352,7 @@ System databases here are: master, model, msdb, distribution, ReportServer, Repo
                   <name>MSSQL - {#SQLINSTANCENAME}</name>
                 </application_prototype>
                 <application_prototype>
-                  <name>SQL {#SQLINSTANCENAME} Database {#DBNAME}</name>
+                  <name>MSSQL - {#SQLINSTANCENAME} - Database {#DBNAME}</name>
                 </application_prototype>
               </application_prototypes>
               <valuemap>
@@ -384,7 +382,7 @@ System databases here are: master, model, msdb, distribution, ReportServer, Repo
                   <dependencies>
                     <dependency>
                       <name>SQL Instance {#SQLINSTANCENAME} Database {#DBNAME}: Log Backup is older then {$UDBLTIME1} minutes</name>
-                      <expression>{dotup-Template-Microsoft SQL Server Database Backup:backup.userdatabaselog.mssql.status[{#SQLINSTANCENAME},{#DBNAME},{$UDBLTIME1},{$UDBLTIME2},{$UDBLTIME3}].last(,0)}=17</expression>
+                      <expression>{dotup-zabbix-template-mssql-backup:backup.userdatabaselog.mssql.status[{#SQLINSTANCENAME},{#DBNAME},{$UDBLTIME1},{$UDBLTIME2},{$UDBLTIME3}].last(,0)}=17</expression>
                     </dependency>
                   </dependencies>
                   <tags>
@@ -403,7 +401,7 @@ System databases here are: master, model, msdb, distribution, ReportServer, Repo
                   <dependencies>
                     <dependency>
                       <name>SQL Instance {#SQLINSTANCENAME} Database {#DBNAME}: Log Backup is older then {$UDBLTIME2} minutes</name>
-                      <expression>{dotup-Template-Microsoft SQL Server Database Backup:backup.userdatabaselog.mssql.status[{#SQLINSTANCENAME},{#DBNAME},{$UDBLTIME1},{$UDBLTIME2},{$UDBLTIME3}].last(,0)}=18</expression>
+                      <expression>{dotup-zabbix-template-mssql-backup:backup.userdatabaselog.mssql.status[{#SQLINSTANCENAME},{#DBNAME},{$UDBLTIME1},{$UDBLTIME2},{$UDBLTIME3}].last(,0)}=18</expression>
                     </dependency>
                   </dependencies>
                   <tags>
@@ -432,7 +430,7 @@ System databases here are: master, model, msdb, distribution, ReportServer, Repo
       </discovery_rules>
       <tags>
         <tag>
-          <tag>dotup</tag>
+          <tag>dotup.de</tag>
           <value>dotup IT solutions</value>
         </tag>
       </tags>
