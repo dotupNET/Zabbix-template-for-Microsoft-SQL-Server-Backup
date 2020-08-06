@@ -57,7 +57,7 @@ already in SQL Server.
 + {$UDBLTIME3} User db log backup time value 3 - 90 - 90 minutes - High
 
 ## Interval
-Default Items Update interval (5m seconds), History storage period (60 days) and Trend storage period (90 days)
+Default Items Update interval (1m seconds), History storage period (60 days) and Trend storage period (90 days)
 
 ## Applications
 + Database
