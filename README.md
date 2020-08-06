@@ -62,7 +62,7 @@ Default Items Update interval (5m seconds), History storage period (60 days) and
 ## Applications
 + Database
 + MSSQL
-+ MSSQL {#SQLINSTANCENAME}
++ MSSQL - {#SQLINSTANCENAME}
 + MSSQL - {#SQLINSTANCENAME} - System Database {#DBNAME}
 + MSSQL - {#SQLINSTANCENAME} - Database {#DBNAME}
 
