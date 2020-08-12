@@ -7,7 +7,7 @@ Param(
 	[string]$SYSDBFTIME2,
 	[string]$SYSDBFTIME3
 )
- 
+ h
 
 if ($InstName -and $DBName)
 {
